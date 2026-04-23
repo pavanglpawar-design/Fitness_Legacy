@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Legacy | Best Gym in Chakala, Andheri East</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --iron: #111111;
+    --steel: #1c1c1e;
+    --smoke: #2a2a2a;
+    --gold: #c9a84c;
+    --gold-light: #e8c96e;
+    --white: #f5f0eb;
+    --muted: #888880;
+    --red: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s, height 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease;
+    opacity: 0.6;
+  }
+  a:hover ~ .cursor, button:hover ~ .cursor { transform: translate(-50%, -50%) scale(2); }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.35;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black);
+    padding: 10px 24px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 48px 80px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      linear-gradient(160deg, #0a0a0a 0%, #111 40%, #0d0d0d 100%);
+  }
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(201,168,76,0.03) 0px, rgba(201,168,76,0.03) 1px, transparent 1px, transparent 80px);
+  }
+  .hero-accent {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 45%;
+    background: linear-gradient(160deg, rgba(201,168,76,0.05) 0%, transparent 60%);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 8px 18px;
+    margin-bottom: 32px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .hero-badge::before { content: '★'; }
+  .hero-rating { color: var(--white); opacity: 0.9; }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    animation: slideUp 0.8s ease both;
+  }
+  .hero-title .gold { color: var(--gold); }
+  .hero-title .outline {
+    -webkit-text-stroke: 1px rgba(245,240,235,0.3);
+    color: transparent;
+  }
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    animation: slideUp 0.8s 0.1s ease both;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,240,235,0.65);
+    max-width: 480px;
+    margin-bottom: 48px;
+    animation: slideUp 0.8s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: slideUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 16px 36px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(201,168,76,0.3);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(245,240,235,0.2);
+    color: var(--white);
+    padding: 16px 36px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  }
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+  }
+  .hero-stats {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    z-index: 2;
+    animation: fadeIn 1s 0.5s ease both;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stat-divider { width: 40px; height: 1px; background: rgba(201,168,76,0.3); margin-left: auto; margin-top: 8px; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 48px; }
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  /* FEATURES */
+  #features { background: var(--iron); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .feature-card {
+    background: var(--steel);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .feature-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .feature-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .feature-num {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(201,168,76,0.06);
+    line-height: 1;
+  }
+
+  /* PRICING */
+  #pricing { background: var(--black); }
+  .pricing-header { max-width: 500px; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .price-card {
+    background: var(--steel);
+    padding: 48px 36px;
+    position: relative;
+    transition: transform 0.3s;
+    overflow: hidden;
+  }
+  .price-card.featured {
+    background: linear-gradient(160deg, rgba(201,168,76,0.12) 0%, var(--steel) 60%);
+    border: 1px solid rgba(201,168,76,0.25);
+  }
+  .price-card:hover { transform: translateY(-6px); }
+  .price-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    margin-bottom: 24px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .price-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .price-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .price-amount .currency {
+    font-size: 2rem;
+    vertical-align: super;
+    line-height: 1;
+  }
+  .price-period {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 36px;
+  }
+  .price-features { list-style: none; margin-bottom: 40px; }
+  .price-features li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,240,235,0.75);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .price-features li::before { content: '—'; color: var(--gold); font-size: 0.8rem; }
+  .price-features li.disabled { color: var(--muted); opacity: 0.4; }
+  .price-features li.disabled::before { content: '×'; color: var(--muted); }
+  .btn-plan {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-plan-gold {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .btn-plan-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-plan-outline {
+    border: 1px solid rgba(245,240,235,0.15);
+    color: var(--white);
+  }
+  .btn-plan-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* REVIEWS */
+  #reviews { background: var(--iron); }
+  .reviews-intro { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; gap: 24px; }
+  .rating-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .rating-sub { font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
+  .stars { font-size: 1.2rem; color: var(--gold); letter-spacing: 2px; margin-bottom: 6px; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .review-card {
+    background: var(--steel);
+    padding: 36px;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .review-card:hover { transform: translateY(-4px); }
+  .review-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: rgba(201,168,76,0.12);
+    line-height: 0.8;
+    margin-bottom: 16px;
+  }
+  .review-text {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(245,240,235,0.8);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .reviewer { display: flex; align-items: center; gap: 14px; }
+  .reviewer-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--smoke));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  .reviewer-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+  }
+  .reviewer-meta { font-size: 0.75rem; color: var(--muted); letter-spacing: 1px; }
+  .review-stars { font-size: 0.8rem; color: var(--gold); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute;
+    left: -200px; top: 50%;
+    transform: translateY(-50%);
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    position: relative;
+  }
+  .contact-info { }
+  .contact-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .contact-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .contact-item-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .contact-item-text {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(245,240,235,0.75);
+  }
+  .contact-item-text a { color: inherit; text-decoration: none; }
+  .contact-item-text a:hover { color: var(--gold); }
+  .contact-actions { display: flex; flex-direction: column; gap: 16px; }
+  .contact-big-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 36px;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-whatsapp {
+    background: #075e54;
+    color: #fff;
+  }
+  .btn-whatsapp:hover { background: #128c7e; transform: translateX(4px); }
+  .btn-call {
+    background: var(--steel);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .btn-call:hover { border-color: var(--gold); transform: translateX(4px); }
+  .btn-maps {
+    background: var(--steel);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .btn-maps:hover { border-color: var(--gold); transform: translateX(4px); }
+  .contact-btn-left { display: flex; align-items: center; gap: 16px; }
+  .contact-btn-icon { font-size: 1.5rem; }
+  .contact-btn-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+  }
+  .contact-btn-sub { font-size: 0.8rem; opacity: 0.6; font-weight: 300; }
+  .contact-btn-arrow { font-size: 1.5rem; opacity: 0.5; transition: opacity 0.2s; }
+  .contact-big-btn:hover .contact-btn-arrow { opacity: 1; }
+
+  /* HOURS */
+  .hours-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+  .hour-item {
+    background: var(--steel);
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .hour-day { color: var(--muted); font-weight: 300; }
+  .hour-time { color: var(--white); font-weight: 600; }
+  .hour-open { color: var(--gold); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* FOOTER */
+  footer {
+    background: var(--iron);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+  .footer-logo span { color: var(--white); }
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* SCROLL INDICATOR */
+  .scroll-line {
+    position: absolute;
+    bottom: 32px; left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 2;
+  }
+  .scroll-line::after {
+    content: '';
+    display: block;
+    width: 60px; height: 1px;
+    background: var(--muted);
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--gold);
+    overflow: hidden;
+    padding: 14px 0;
+  }
+  .ticker-inner {
+    display: flex;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 32px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    color: var(--black);
+  }
+  .ticker-dot { width: 6px; height: 6px; background: rgba(0,0,0,0.3); border-radius: 50%; }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    #hero { padding: 0 24px 100px; }
+    .hero-stats { display: none; }
+    .features-grid, .pricing-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+    .hours-grid { grid-template-columns: 1fr; }
+    .reviews-intro { flex-direction: column; align-items: flex-start; }
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">FITNESS <span>LEGACY</span></a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/919664444953?text=Hi!%20I%27m%20interested%20in%20joining%20Fitness%20Legacy." 
+     target="_blank" class="nav-cta">Join Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-rating">4.7 ★ · 254 Reviews · Best Gym Chakala</span>
+    </div>
+    <h1 class="hero-title">
+      FITNESS<br>
+      <span class="gold">LEGACY</span><br>
+      <span class="outline">GYM</span>
+    </h1>
+    <p class="hero-sub">Andheri East · Chakala · Mumbai</p>
+    <p class="hero-desc">Where strength is built and legacies are forged. Premium equipment, expert trainers, and a community that pushes you beyond your limits.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/919664444953?text=Hi!%20I%27m%20interested%20in%20joining%20Fitness%20Legacy." 
+         target="_blank" class="btn-primary">
+        💬 WhatsApp Us
+      </a>
+      <a href="#pricing" class="btn-secondary">
+        View Plans →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">4.7</span>
+      <div class="stat-label">Google Rating</div>
+      <div class="stat-divider"></div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">254+</span>
+      <div class="stat-label">Happy Members</div>
+      <div class="stat-divider"></div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">6A–11P</span>
+      <div class="stat-label">Open Daily</div>
+      <div class="stat-divider"></div>
+    </div>
+  </div>
+
+  <div class="scroll-line">Scroll to explore</div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Modern Equipment <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Expert Trainers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Affordable Pricing <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Clean Facilities <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Convenient Parking <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Best Gym in Chakala <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Modern Equipment <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Expert Trainers <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Affordable Pricing <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Clean Facilities <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Convenient Parking <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Best Gym in Chakala <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Built for<br>Serious Athletes</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon">🏋️</span>
+      <span class="feature-num">01</span>
+      <div class="feature-title">Modern Equipment</div>
+      <p class="feature-desc">Wide range of machines and free weights catering to every fitness level — from beginners to competitive powerlifters. Always maintained, always clean.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">👨‍🏫</span>
+      <span class="feature-num">02</span>
+      <div class="feature-title">Expert Trainers</div>
+      <p class="feature-desc">Certified, motivating, and genuinely invested in your progress. Our trainers craft personalised programs and keep you accountable every step of the way.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">✨</span>
+      <span class="feature-num">03</span>
+      <div class="feature-title">Hygienic Facilities</div>
+      <p class="feature-desc">A clean, well-maintained workout environment so you can focus entirely on your fitness. Regular sanitisation and organised equipment throughout.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🅿️</span>
+      <span class="feature-num">04</span>
+      <div class="feature-title">Convenient Parking</div>
+      <p class="feature-desc">Hassle-free parking at Bajsons Estate, CG Road. No more circling the block — arrive ready to train.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌍</span>
+      <span class="feature-num">05</span>
+      <div class="feature-title">Prime Location</div>
+      <p class="feature-desc">Situated in Kajuwadi, Chakala, Andheri East — easily accessible from the Western Express Highway and Andheri Metro Station.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🤝</span>
+      <span class="feature-num">06</span>
+      <div class="feature-title">Welcoming Community</div>
+      <p class="feature-desc">A positive, motivating atmosphere where newcomers feel at home and veterans push each other further. Fitness is better together.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div class="section-label">Membership Plans</div>
+    <h2 class="section-title">Invest in<br>Your Strength</h2>
+    <p style="font-size:0.95rem;font-weight:300;color:var(--muted);line-height:1.7;margin-top:16px;">Quality fitness at an affordable price. Choose the plan that fits your goals and lock in your legacy.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Monthly</div>
+      <div class="price-amount"><span class="currency">₹</span>999</div>
+      <div class="price-period">per month · no commitment</div>
+      <ul class="price-features">
+        <li>Full gym access</li>
+        <li>Locker facility</li>
+        <li>Basic trainer guidance</li>
+        <li class="disabled">Personal training sessions</li>
+        <li class="disabled">Diet consultation</li>
+      </ul>
+      <a href="https://wa.me/919664444953?text=Hi!%20I%27m%20interested%20in%20the%20Monthly%20membership%20at%20Fitness%20Legacy." 
+         target="_blank" class="btn-plan btn-plan-outline">Get Started</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-name">Quarterly</div>
+      <div class="price-amount"><span class="currency">₹</span>2,499</div>
+      <div class="price-period">3 months · save 17%</div>
+      <ul class="price-features">
+        <li>Full gym access</li>
+        <li>Locker facility</li>
+        <li>Trainer-guided workouts</li>
+        <li>2 personal training sessions</li>
+        <li class="disabled">Diet consultation</li>
+      </ul>
+      <a href="https://wa.me/919664444953?text=Hi!%20I%27m%20interested%20in%20the%20Quarterly%20membership%20at%20Fitness%20Legacy." 
+         target="_blank" class="btn-plan btn-plan-gold">Get Started</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Annual</div>
+      <div class="price-amount"><span class="currency">₹</span>7,999</div>
+      <div class="price-period">12 months · best value</div>
+      <ul class="price-features">
+        <li>Full gym access</li>
+        <li>Locker facility</li>
+        <li>Unlimited trainer guidance</li>
+        <li>Monthly personal training</li>
+        <li>Diet consultation included</li>
+      </ul>
+      <a href="https://wa.me/919664444953?text=Hi!%20I%27m%20interested%20in%20the%20Annual%20membership%20at%20Fitness%20Legacy." 
+         target="_blank" class="btn-plan btn-plan-outline">Get Started</a>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:32px;font-size:0.8rem;color:var(--muted);">* Prices are indicative. Contact us on WhatsApp for current offers and exact pricing.</p>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-intro">
+    <div>
+      <div class="section-label">Member Reviews</div>
+      <h2 class="section-title">What Our Members Say</h2>
+    </div>
+    <div style="text-align:right">
+      <div class="rating-big">4.7</div>
+      <div class="stars">★★★★★</div>
+      <div class="rating-sub">254 Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">I just completed my first month at Fitness Legacy and couldn't be happier! The gym is well-equipped, clean, and has a great atmosphere. The trainers are friendly, knowledgeable, and always ready to help.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">AC</div>
+        <div>
+          <div class="reviewer-name">Abhi Chavan</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="reviewer-meta">10 months ago · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">The staff here is extremely friendly and always ready to help. The gym is well-equipped with a wide range of machines. The trainers are polite, motivating, and genuinely care about your progress.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">KP</div>
+        <div>
+          <div class="reviewer-name">Komal Pahwani</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="reviewer-meta">8 months ago · Google Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <p class="review-text">A clean, well-maintained workout space with modern equipment and a supportive team of trainers. The positive, welcoming atmosphere and convenient parking make it a standout gym in the area.</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">SA</div>
+        <div>
+          <div class="reviewer-name">Sartaj Ansari</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="reviewer-meta">10 months ago · Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:48px;">
+    <a href="https://maps.app.goo.gl/367FRZZSFTG7nG99A" target="_blank" class="btn-secondary" style="display:inline-flex;">
+      Read All 254 Reviews on Google →
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Start Your<br>Legacy Today</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-item-title">Address</div>
+          <div class="contact-item-text">Ground Floor, Bajsons Estate, CG Road,<br>Opposite Hotel Samraj Building, Kajuwadi,<br>Chakala, Andheri East, Mumbai – 400099</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-item-title">Phone</div>
+          <div class="contact-item-text"><a href="tel:+919664444953">096644 44953</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-item-title">Opening Hours</div>
+          <div class="contact-item-text">Open Daily · 6:00 AM – 11:00 PM</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:16px;">Weekly Schedule</div>
+        <div class="hours-grid">
+          <div class="hour-item">
+            <span class="hour-day">Monday</span>
+            <span class="hour-time">6am – 11pm</span>
+          </div>
+          <div class="hour-item">
+            <span class="hour-day">Tuesday</span>
+            <span class="hour-time">6am – 11pm</span>
+          </div>
+          <div class="hour-item">
+            <span class="hour-day">Wednesday</span>
+            <span class="hour-time">6am – 11pm</span>
+          </div>
+          <div class="hour-item">
+            <span class="hour-day">Thursday</span>
+            <span class="hour-time">6am – 11pm</span>
+          </div>
+          <div class="hour-item">
+            <span class="hour-day">Friday</span>
+            <span class="hour-time">6am – 11pm</span>
+          </div>
+          <div class="hour-item">
+            <span class="hour-day">Saturday</span>
+            <span class="hour-time">6am – 11pm</span>
+          </div>
+          <div class="hour-item">
+            <span class="hour-day">Sunday</span>
+            <span class="hour-open">Open ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-actions">
+      <a href="https://wa.me/919664444953?text=Hi!%20I%27m%20interested%20in%20joining%20Fitness%20Legacy%20Gym%20in%20Chakala%2C%20Andheri%20East.%20Can%20you%20tell%20me%20more%20about%20membership%20plans%3F" 
+         target="_blank" class="contact-big-btn btn-whatsapp">
+        <div class="contact-btn-left">
+          <div class="contact-btn-icon">💬</div>
+          <div>
+            <span class="contact-btn-title">Chat on WhatsApp</span>
+            <span class="contact-btn-sub">Instant reply · Ask about plans</span>
+          </div>
+        </div>
+        <span class="contact-btn-arrow">→</span>
+      </a>
+      <a href="tel:+919664444953" class="contact-big-btn btn-call">
+        <div class="contact-btn-left">
+          <div class="contact-btn-icon">📞</div>
+          <div>
+            <span class="contact-btn-title">Call Us Directly</span>
+            <span class="contact-btn-sub">096644 44953</span>
+          </div>
+        </div>
+        <span class="contact-btn-arrow">→</span>
+      </a>
+      <a href="https://maps.app.goo.gl/367FRZZSFTG7nG99A" target="_blank" class="contact-big-btn btn-maps">
+        <div class="contact-btn-left">
+          <div class="contact-btn-icon">🗺️</div>
+          <div>
+            <span class="contact-btn-title">Get Directions</span>
+            <span class="contact-btn-sub">Open in Google Maps</span>
+          </div>
+        </div>
+        <span class="contact-btn-arrow">→</span>
+      </a>
+      <div style="background:var(--steel);padding:28px 36px;border-left:3px solid var(--gold);">
+        <div class="section-label" style="margin-bottom:12px;">First Visit Free</div>
+        <p style="font-size:0.9rem;font-weight:300;line-height:1.7;color:rgba(245,240,235,0.7);">Walk in for a free trial session. Experience the gym before committing. We're confident you'll love it — just as our 254 members do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">FITNESS <span>LEGACY</span></div>
+  <div class="footer-copy">© 2025 Fitness Legacy · Chakala, Andheri East, Mumbai</div>
+  <div class="footer-links">
+    <a href="https://wa.me/919664444953" target="_blank">WhatsApp</a>
+    <a href="tel:+919664444953">Call</a>
+    <a href="https://maps.app.goo.gl/367FRZZSFTG7nG99A" target="_blank">Maps</a>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%, -50%) scale(2)'; ring.style.transform = 'translate(-50%, -50%) scale(1.5)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%, -50%) scale(1)'; ring.style.transform = 'translate(-50%, -50%) scale(1)'; });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card, .price-card, .review-card, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
